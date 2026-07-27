@@ -1,151 +1,297 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALLSTAR UNITED ESPORTS</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
+<title>ALLSTAR UNITED ESPORTS</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:#0d0d0d;
+color:white;
+text-align:center;
+}
+
+header{
+padding:60px 20px;
+background:linear-gradient(90deg,#111,#222,#111);
+}
+
+h1{
+font-size:35px;
+}
+
+button{
+margin:10px;
+padding:14px 22px;
+border:none;
+border-radius:12px;
+background:#ffffff;
+color:#000;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+.section{
+display:none;
+padding:25px;
+}
+
+.card{
+background:#1a1a1a;
+width:320px;
+margin:15px auto;
+padding:20px;
+border-radius:15px;
+}
+
+.member{
+display:block;
+margin:8px auto;
+width:250px;
+}
+
+.footer{
+padding:40px;
+font-size:28px;
+font-weight:bold;
+}
+</style>
 </head>
 
 <body>
 
-<!-- Trang chào -->
-<section id="welcome">
+<header>
 
-    <h1>ALLSTAR UNITED ESPORTS</h1>
+<h1>ALLSTAR UNITED ESPORTS</h1>
 
-    <button id="startBtn">
-        CHÀO MỪNG BẠN ĐẾN VỚI ALLSTAR UNITED ESPORTS
-    </button>
+<br>
 
-</section>
+<button onclick="showHome()">
+CHÀO MỪNG BẠN ĐẾN VỚI ALLSTAR UNITED ESPORTS
+</button>
 
-<!-- Nội dung -->
-<section id="main">
+</header>
 
-    <h2>ĐỘI HÌNH HIỆN TẠI</h2>
+<div id="home" class="section">
 
-    <div class="players">
+<h2>ĐỘI HÌNH HIỆN TẠI</h2>
 
-        <div class="player" onclick="showPlayer('PER')">
-            <img src="images/PER.png">
-            <h3>PER</h3>
-        </div>
+<button class="member" onclick="showPlayer('per')">PER</button>
+<button class="member" onclick="showPlayer('ken')">KEN</button>
+<button class="member" onclick="showPlayer('manjiro')">MANJIRO</button>
+<button class="member" onclick="showPlayer('khoa')">ANH KHOA</button>
+<button class="member" onclick="showPlayer('notar7')">NOTAR7</button>
+<button class="member" onclick="showPlayer('tin')">TIN</button>
 
-        <div class="player" onclick="showPlayer('KEN')">
-            <img src="images/KEN.png">
-            <h3>KEN</h3>
-        </div>
+<div id="player"></div>
 
-        <div class="player" onclick="showPlayer('MANJIRO')">
-            <img src="images/MANJIRO.png">
-            <h3>MANJIRO</h3>
-        </div>
+<br>
 
-        <div class="player" onclick="showPlayer('HZE')">
-            <img src="images/ANHKHOA.png">
-            <h3>ANH KHOA</h3>
-        </div>
+<button onclick="showAchievements()">
+THÀNH TÍCH CỦA TEAM
+</button>
 
-        <div class="player" onclick="showPlayer('NOTAR7')">
-            <img src="images/NOTAR7.png">
-            <h3>NOTAR7</h3>
-        </div>
+<div id="achievement" class="section">
 
-        <div class="player" onclick="showPlayer('TIN')">
-            <img src="images/TIN.png">
-            <h3>TIN</h3>
-        </div>
+<div class="card">
+<h2>🏆 THÀNH TÍCH</h2>
 
-    </div>
+<br>
 
-    <h2>THÀNH TÍCH</h2>
+<h3>VÔ ĐỊCH VTL SS3</h3>
 
-    <div class="achievement">
-        <p>🏆 VÔ ĐỊCH VTL SS3</p>
-        <p>🏆 VÔ ĐỊCH VTL SS4</p>
-    </div>
+<br>
 
-    <h2>LINE UP MỚI / CŨ</h2>
-
-    <button onclick="toggleLineup()">XEM LINE UP</button>
-
-    <div id="lineup">
-
-        <h3>LINE UP MỚI</h3>
-
-        <img src="images/lineupnew.jpg">
-
-        <p>PER - RUSHER</p>
-        <p>KEN - SUPPORT</p>
-        <p>MANJIRO - SUPPORT</p>
-        <p>ANH KHOA - BOMMER</p>
-        <p>NOTAR7 - BOMMER</p>
-        <p>TIN - SNIPER</p>
-
-        <hr>
-
-        <h3>LINE UP CŨ</h3>
-
-        <img src="images/lineupold.jpg">
-
-        <p>JR - RUSHER</p>
-        <p>MANJIRO - SUPPORT</p>
-        <p>TWNO1 - BOMMER</p>
-        <p>NOTAR7 - SNIPER</p>
-
-    </div>
-
-    <h2>HÀNH TRÌNH CỦA TEAM</h2>
-
-    <div class="gallery">
-
-        <img src="images/journey1.jpg">
-        <img src="images/journey2.jpg">
-        <img src="images/journey3.jpg">
-        <img src="images/journey4.jpg">
-        <img src="images/journey5.jpg">
-        <img src="images/journey6.jpg">
-
-    </div>
-
-    <h2>KỶ NIỆM CỦA TEAM</h2>
-
-    <div class="gallery">
-
-        <img src="images/m1.jpg">
-        <img src="images/m2.jpg">
-        <img src="images/m3.jpg">
-        <img src="images/m4.jpg">
-        <img src="images/m5.jpg">
-        <img src="images/m6.jpg">
-        <img src="images/m7.jpg">
-
-    </div>
-
-    <button id="thanksBtn">
-
-        THANK YOU MỌI NGƯỜI ĐÃ ĐẾN ❤️🤍
-
-    </button>
-
-</section>
-
-<div id="popup">
-
-    <div id="popupContent">
-
-        <span onclick="closePopup()">✖</span>
-
-        <div id="info"></div>
-
-    </div>
+<h3>VÔ ĐỊCH VTL SS4</h3>
 
 </div>
 
-<script src="script.js"></script>
+<br>
+
+<button onclick="showLineup()">
+LINE UP MỚI / CŨ
+</button>
+
+</div>
+
+<div id="lineup" class="section">
+
+<div class="card">
+
+<h2>LINE UP MỚI</h2>
+
+<br>
+
+PER : RUSHER
+
+<br><br>
+
+KEN : SUPPORT
+
+<br><br>
+
+MANJIRO : SUPPORT
+
+<br><br>
+
+ANH KHOA : BOMMER
+
+<br><br>
+
+NOTAR7 : BOMMER
+
+<br><br>
+
+TIN : SNIPER
+
+</div>
+
+<div class="card">
+
+<h2>LINE UP CŨ</h2>
+
+<br>
+
+JR : RUSHER
+
+<br><br>
+
+MANJIRO : SUPPORT
+
+<br><br>
+
+TWNO1 : BOMMER
+
+<br><br>
+
+NOTAR7 : SNIPER
+
+</div>
+
+<br>
+
+<button onclick="showThanks()">
+KẾT THÚC
+</button>
+
+</div>
+
+<div id="thanks" class="section footer">
+
+❤️🤍
+
+<br><br>
+
+THANK YOU MỌI NGƯỜI ĐÃ ĐẾN
+
+</div>
+
+</div>
+
+<script>
+
+function showHome(){
+document.getElementById("home").style.display="block";
+}
+
+function showPlayer(name){
+
+let text="";
+
+if(name=="per"){
+text=`
+<div class="card">
+<h2>ASU.PER</h2><br>
+<b>TÊN THẬT:</b> CÔNG LÝ<br>
+<b>NGÀY SINH:</b> 05/02/2007<br><br>
+TEAM THI ĐẤU<br>
+ALLSTAR UNITED ESPORTS
+</div>`;
+}
+
+if(name=="ken"){
+text=`
+<div class="card">
+<h2>ASU.KEN</h2><br>
+<b>TÊN THẬT:</b> GIA NGUYỄN<br><br>
+TEAM THI ĐẤU<br>
+ALLSTAR UNITED ESPORTS
+</div>`;
+}
+
+if(name=="manjiro"){
+text=`
+<div class="card">
+<h2>ASU.MANJIRO</h2><br>
+<b>TÊN THẬT:</b> THÀNH DANH<br><br>
+TEAM THI ĐẤU<br>
+ALLSTAR UNITED ESPORTS
+</div>`;
+}
+
+if(name=="khoa"){
+text=`
+<div class="card">
+<h2>ASU.HZE</h2><br>
+<b>TÊN THẬT:</b> ANH KHOA<br>
+<b>NGÀY SINH:</b> 28/06/2011<br><br>
+TEAM THI ĐẤU<br>
+ALLSTAR UNITED ESPORTS
+</div>`;
+}
+
+if(name=="notar7"){
+text=`
+<div class="card">
+<h2>ASU.NOTAR7</h2><br>
+<b>TÊN THẬT:</b> NGUYỄN THÀNH CÔNG<br>
+<b>NGÀY SINH:</b> 23/05/2010<br><br>
+TEAM THI ĐẤU<br>
+ALLSTAR UNITED ESPORTS
+</div>`;
+}
+
+if(name=="tin"){
+text=`
+<div class="card">
+<h2>ASU.TIN</h2><br>
+<b>TÊN THẬT:</b> PHẠM HÙNG<br><br>
+TEAM THI ĐẤU<br>
+ALLSTAR UNITED ESPORTS
+</div>`;
+}
+
+document.getElementById("player").innerHTML=text;
+
+}
+
+function showAchievements(){
+document.getElementById("achievement").style.display="block";
+}
+
+function showLineup(){
+document.getElementById("lineup").style.display="block";
+}
+
+function showThanks(){
+document.getElementById("thanks").style.display="block";
+}
+
+</script>
 
 </body>
 </html>
