@@ -27,6 +27,7 @@ background:linear-gradient(90deg,#111,#222,#111);
 
 h1{
 font-size:35px;
+margin-bottom:20px;
 }
 
 button{
@@ -43,6 +44,7 @@ transition:.3s;
 
 button:hover{
 transform:scale(1.05);
+background:#ffcc00;
 }
 
 .section{
@@ -56,6 +58,13 @@ width:320px;
 margin:15px auto;
 padding:20px;
 border-radius:15px;
+border:2px solid #ffcc00;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 0 20px rgba(255,204,0,0.5);
 }
 
 .member{
@@ -64,10 +73,65 @@ margin:8px auto;
 width:250px;
 }
 
+.members-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+gap:20px;
+padding:20px;
+max-width:1200px;
+margin:0 auto;
+}
+
+.member-card{
+background:#1a1a1a;
+padding:25px;
+border-radius:15px;
+border:2px solid #ffcc00;
+transition:.3s;
+cursor:pointer;
+}
+
+.member-card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 25px rgba(255,204,0,0.6);
+background:#222;
+}
+
+.member-card h3{
+font-size:24px;
+color:#ffcc00;
+margin-bottom:10px;
+}
+
+.member-card p{
+font-size:14px;
+line-height:1.8;
+color:#ccc;
+}
+
+.role{
+background:#ffcc00;
+color:#000;
+padding:5px 10px;
+border-radius:5px;
+display:inline-block;
+margin-top:10px;
+font-weight:bold;
+}
+
 .footer{
 padding:40px;
 font-size:28px;
 font-weight:bold;
+}
+
+.back-btn{
+background:#ff6b6b;
+color:white;
+}
+
+.back-btn:hover{
+background:#ff5252;
 }
 </style>
 </head>
@@ -76,7 +140,7 @@ font-weight:bold;
 
 <header>
 
-<h1>ALLSTAR UNITED ESPORTS</h1>
+<h1>⚡ ALLSTAR UNITED ESPORTS ⚡</h1>
 
 <br>
 
@@ -88,22 +152,19 @@ CHÀO MỪNG BẠN ĐẾN VỚI ALLSTAR UNITED ESPORTS
 
 <div id="home" class="section">
 
-<h2>ĐỘI HÌNH HIỆN TẠI</h2>
+<h2>👥 ĐỘI HÌNH HIỆN TẠI - 6 THÀNH VIÊN</h2>
 
-<button class="member" onclick="showPlayer('per')">PER</button>
-<button class="member" onclick="showPlayer('ken')">KEN</button>
-<button class="member" onclick="showPlayer('manjiro')">MANJIRO</button>
-<button class="member" onclick="showPlayer('khoa')">ANH KHOA</button>
-<button class="member" onclick="showPlayer('notar7')">NOTAR7</button>
-<button class="member" onclick="showPlayer('tin')">TIN</button>
+<div class="members-grid" id="membersGrid">
+<!-- Members will be generated here -->
+</div>
 
-<div id="player"></div>
-
-<br>
+<br><br>
 
 <button onclick="showAchievements()">
-THÀNH TÍCH CỦA TEAM
+🏆 THÀNH TÍCH CỦA TEAM
 </button>
+
+</div>
 
 <div id="achievement" class="section">
 
@@ -123,7 +184,11 @@ THÀNH TÍCH CỦA TEAM
 <br>
 
 <button onclick="showLineup()">
-LINE UP MỚI / CŨ
+📋 LINE UP MỚI / CŨ
+</button>
+
+<button class="back-btn" onclick="goBack()">
+← QUAY LẠI
 </button>
 
 </div>
@@ -132,7 +197,7 @@ LINE UP MỚI / CŨ
 
 <div class="card">
 
-<h2>LINE UP MỚI</h2>
+<h2>📋 LINE UP MỚI</h2>
 
 <br>
 
@@ -162,7 +227,7 @@ TIN : SNIPER
 
 <div class="card">
 
-<h2>LINE UP CŨ</h2>
+<h2>📋 LINE UP CŨ</h2>
 
 <br>
 
@@ -185,7 +250,11 @@ NOTAR7 : SNIPER
 <br>
 
 <button onclick="showThanks()">
-KẾT THÚC
+❤️ KẾT THÚC
+</button>
+
+<button class="back-btn" onclick="goBack()">
+← QUAY LẠI
 </button>
 
 </div>
@@ -198,97 +267,112 @@ KẾT THÚC
 
 THANK YOU MỌI NGƯỜI ĐÃ ĐẾN
 
-</div>
+<br><br>
+
+<button class="back-btn" onclick="showHome()">
+← QUAY LẠI TRANG CHỦ
+</button>
 
 </div>
 
 <script>
 
+// Player Data
+const players = [
+  {
+    name: "PER",
+    realName: "CÔNG LÝ",
+    role: "RUSHER",
+    birthDate: "05/02/2007"
+  },
+  {
+    name: "KEN",
+    realName: "GIA NGUYỄN",
+    role: "SUPPORT",
+    birthDate: ""
+  },
+  {
+    name: "MANJIRO",
+    realName: "THÀNH DANH",
+    role: "SUPPORT",
+    birthDate: ""
+  },
+  {
+    name: "HZE",
+    realName: "ANH KHOA",
+    role: "BOMMER",
+    birthDate: "28/06/2011"
+  },
+  {
+    name: "NOTAR7",
+    realName: "NGUYỄN THÀNH CÔNG",
+    role: "BOMMER",
+    birthDate: "23/05/2010"
+  },
+  {
+    name: "TIN",
+    realName: "PHẠM HÙNG",
+    role: "SNIPER",
+    birthDate: ""
+  }
+];
+
+// Initialize members grid on page load
+window.onload = function() {
+  renderMembers();
+};
+
+function renderMembers() {
+  const grid = document.getElementById("membersGrid");
+  grid.innerHTML = "";
+  
+  players.forEach(player => {
+    const memberCard = document.createElement("div");
+    memberCard.className = "member-card";
+    
+    let birthDateHTML = player.birthDate ? `<p><b>NGÀY SINH:</b> ${player.birthDate}</p>` : "";
+    
+    memberCard.innerHTML = `
+      <h3>ASU.${player.name}</h3>
+      <p><b>TÊN THẬT:</b> ${player.realName}</p>
+      ${birthDateHTML}
+      <p><b>TEAM:</b> ALLSTAR UNITED ESPORTS</p>
+      <div class="role">${player.role}</div>
+    `;
+    
+    grid.appendChild(memberCard);
+  });
+}
+
 function showHome(){
-document.getElementById("home").style.display="block";
-}
-
-function showPlayer(name){
-
-let text="";
-
-if(name=="per"){
-text=`
-<div class="card">
-<h2>ASU.PER</h2><br>
-<b>TÊN THẬT:</b> CÔNG LÝ<br>
-<b>NGÀY SINH:</b> 05/02/2007<br><br>
-TEAM THI ĐẤU<br>
-ALLSTAR UNITED ESPORTS
-</div>`;
-}
-
-if(name=="ken"){
-text=`
-<div class="card">
-<h2>ASU.KEN</h2><br>
-<b>TÊN THẬT:</b> GIA NGUYỄN<br><br>
-TEAM THI ĐẤU<br>
-ALLSTAR UNITED ESPORTS
-</div>`;
-}
-
-if(name=="manjiro"){
-text=`
-<div class="card">
-<h2>ASU.MANJIRO</h2><br>
-<b>TÊN THẬT:</b> THÀNH DANH<br><br>
-TEAM THI ĐẤU<br>
-ALLSTAR UNITED ESPORTS
-</div>`;
-}
-
-if(name=="khoa"){
-text=`
-<div class="card">
-<h2>ASU.HZE</h2><br>
-<b>TÊN THẬT:</b> ANH KHOA<br>
-<b>NGÀY SINH:</b> 28/06/2011<br><br>
-TEAM THI ĐẤU<br>
-ALLSTAR UNITED ESPORTS
-</div>`;
-}
-
-if(name=="notar7"){
-text=`
-<div class="card">
-<h2>ASU.NOTAR7</h2><br>
-<b>TÊN THẬT:</b> NGUYỄN THÀNH CÔNG<br>
-<b>NGÀY SINH:</b> 23/05/2010<br><br>
-TEAM THI ĐẤU<br>
-ALLSTAR UNITED ESPORTS
-</div>`;
-}
-
-if(name=="tin"){
-text=`
-<div class="card">
-<h2>ASU.TIN</h2><br>
-<b>TÊN THẬT:</b> PHẠM HÙNG<br><br>
-TEAM THI ĐẤU<br>
-ALLSTAR UNITED ESPORTS
-</div>`;
-}
-
-document.getElementById("player").innerHTML=text;
-
+  hideAllSections();
+  document.getElementById("home").style.display="block";
 }
 
 function showAchievements(){
-document.getElementById("achievement").style.display="block";
+  hideAllSections();
+  document.getElementById("achievement").style.display="block";
 }
 
 function showLineup(){
-document.getElementById("lineup").style.display="block";
+  hideAllSections();
+  document.getElementById("lineup").style.display="block";
 }
 
 function showThanks(){
-document.getElementById("thanks").style.display="block";
+  hideAllSections();
+  document.getElementById("thanks").style.display="block";
+}
+
+function goBack(){
+  showHome();
+}
+
+function hideAllSections(){
+  document.getElementById("home").style.display="none";
+  document.getElementById("achievement").style.display="none";
+  document.getElementById("lineup").style.display="none";
+  document.getElementById("thanks").style.display="none";
 }
 
 </script>
