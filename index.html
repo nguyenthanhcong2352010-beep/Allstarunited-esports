@@ -1,73 +1,151 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ALLSTAR UNITED ESPORTS</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALLSTAR UNITED ESPORTS</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
+<!-- Trang chào -->
+<section id="welcome">
+
     <h1>ALLSTAR UNITED ESPORTS</h1>
-    <p>Official Fan Page</p>
-</header>
 
-<div class="container">
+    <button id="startBtn">
+        CHÀO MỪNG BẠN ĐẾN VỚI ALLSTAR UNITED ESPORTS
+    </button>
 
-<div class="card" onclick="showPlayer('PER','CÔNG LÝ','5/2/2007','RUSHER','ALLSTAR UNITED ESPORTS','images/per.jpg')">
-<h2>PER</h2>
-<p>RUSHER (CAP)</p>
-</div>
+</section>
 
-<div class="card" onclick="showPlayer('KEN','GIA NGUYỄN','','SUPPORT','ALLSTAR UNITED ESPORTS','images/ken.jpg')">
-<h2>KEN</h2>
-<p>SUPPORT</p>
-</div>
+<!-- Nội dung -->
+<section id="main">
 
-<div class="card" onclick="showPlayer('MANJIRO','NGUYỄN THÀNH DANH','','SUPPORT','ALLSTAR UNITED ESPORTS','images/manjiro.jpg')">
-<h2>MANJIRO</h2>
-<p>SUPPORT</p>
-</div>
+    <h2>ĐỘI HÌNH HIỆN TẠI</h2>
 
-<div class="card" onclick="showPlayer('ANH KHOA','ANH KHOA','28/6/2011','BOMMER','ALLSTAR UNITED ESPORTS','images/anhkhoa.jpg')">
-<h2>ANH KHOA</h2>
-<p>BOMMER</p>
-</div>
-<div class="card" onclick="showPlayer('NOTAR7','NGUYỄN THÀNH CÔNG','23/5/2010','BOMMER','ALLSTAR UNITED ESPORTS','images/notar7.jpg')">
-<h2>NOTAR7</h2>
-<p>BOMMER</p>6
-    
-    <div class="card" onclick="showPlayer('TIN', 'TIN', '', 'SNIPER', 'ALLSTAR UNITED ESPORTS', 'images/tin.jpg')">
-    <h2>TIN</h2>
-    <p>SNIPER</p>
+    <div class="players">
+
+        <div class="player" onclick="showPlayer('PER')">
+            <img src="images/PER.png">
+            <h3>PER</h3>
+        </div>
+
+        <div class="player" onclick="showPlayer('KEN')">
+            <img src="images/KEN.png">
+            <h3>KEN</h3>
+        </div>
+
+        <div class="player" onclick="showPlayer('MANJIRO')">
+            <img src="images/MANJIRO.png">
+            <h3>MANJIRO</h3>
+        </div>
+
+        <div class="player" onclick="showPlayer('HZE')">
+            <img src="images/ANHKHOA.png">
+            <h3>ANH KHOA</h3>
+        </div>
+
+        <div class="player" onclick="showPlayer('NOTAR7')">
+            <img src="images/NOTAR7.png">
+            <h3>NOTAR7</h3>
+        </div>
+
+        <div class="player" onclick="showPlayer('TIN')">
+            <img src="images/TIN.png">
+            <h3>TIN</h3>
+        </div>
+
     </div>
-    
-</div>
 
-</div>
+    <h2>THÀNH TÍCH</h2>
 
-<div id="popup" class="popup">
-<div class="popup-content">
+    <div class="achievement">
+        <p>🏆 VÔ ĐỊCH VTL SS3</p>
+        <p>🏆 VÔ ĐỊCH VTL SS4</p>
+    </div>
 
-<span class="close" onclick="closePopup()">×</span>
+    <h2>LINE UP MỚI / CŨ</h2>
 
-<img id="playerImage" src="" alt="Player">
+    <button onclick="toggleLineup()">XEM LINE UP</button>
 
-<h2 id="name"></h2>
+    <div id="lineup">
 
-<p><b>Họ và tên:</b> <span id="fullname"></span></p>
-<p><b>Ngày sinh:</b> <span id="age"></span></p>
-<p><b>ROLE:</b> <span id="role"></span></p>
-<p><b>TEAM:</b> <span id="position"></span></p>
+        <h3>LINE UP MỚI</h3>
 
-</div>
+        <img src="images/lineupnew.jpg">
+
+        <p>PER - RUSHER</p>
+        <p>KEN - SUPPORT</p>
+        <p>MANJIRO - SUPPORT</p>
+        <p>ANH KHOA - BOMMER</p>
+        <p>NOTAR7 - BOMMER</p>
+        <p>TIN - SNIPER</p>
+
+        <hr>
+
+        <h3>LINE UP CŨ</h3>
+
+        <img src="images/lineupold.jpg">
+
+        <p>JR - RUSHER</p>
+        <p>MANJIRO - SUPPORT</p>
+        <p>TWNO1 - BOMMER</p>
+        <p>NOTAR7 - SNIPER</p>
+
+    </div>
+
+    <h2>HÀNH TRÌNH CỦA TEAM</h2>
+
+    <div class="gallery">
+
+        <img src="images/journey1.jpg">
+        <img src="images/journey2.jpg">
+        <img src="images/journey3.jpg">
+        <img src="images/journey4.jpg">
+        <img src="images/journey5.jpg">
+        <img src="images/journey6.jpg">
+
+    </div>
+
+    <h2>KỶ NIỆM CỦA TEAM</h2>
+
+    <div class="gallery">
+
+        <img src="images/m1.jpg">
+        <img src="images/m2.jpg">
+        <img src="images/m3.jpg">
+        <img src="images/m4.jpg">
+        <img src="images/m5.jpg">
+        <img src="images/m6.jpg">
+        <img src="images/m7.jpg">
+
+    </div>
+
+    <button id="thanksBtn">
+
+        THANK YOU MỌI NGƯỜI ĐÃ ĐẾN ❤️🤍
+
+    </button>
+
+</section>
+
+<div id="popup">
+
+    <div id="popupContent">
+
+        <span onclick="closePopup()">✖</span>
+
+        <div id="info"></div>
+
+    </div>
+
 </div>
 
 <script src="script.js"></script>
 
 </body>
 </html>
-<li>🏆 VÔ ĐỊCH VTL SS3</li>
-<li>🏆 VÔ ĐỊCH VTL SS4</li>
