@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALLSTAR UNITED ESPORTS</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>ALLSTAR UNITED ESPORTS</h1>
+    <p>Official Fan Page</p>
+</header>
+
+<div class="container">
+
+<div class="card" onclick="showPlayer('PER','CÔNG LÝ','5/2/2007','RUSHER','ALLSTAR UNITED ESPORTS','images/per.jpg')">
+<h2>PER</h2>
+<p>RUSHER (CAP)</p>
+</div>
+
+<div class="card" onclick="showPlayer('KEN','GIA NGUYỄN','','SUPPORT','ALLSTAR UNITED ESPORTS','images/ken.jpg')">
+<h2>KEN</h2>
+<p>SUPPORT</p>
+</div>
+
+<div class="card" onclick="showPlayer('MANJIRO','NGUYỄN THÀNH DANH','','SUPPORT','ALLSTAR UNITED ESPORTS','images/manjiro.jpg')">
+<h2>MANJIRO</h2>
+<p>SUPPORT</p>
+</div>
+
+<div class="card" onclick="showPlayer('ANH KHOA','ANH KHOA','28/6/2011','BOMMER','ALLSTAR UNITED ESPORTS','images/anhkhoa.jpg')">
+<h2>ANH KHOA</h2>
+<p>BOMMER</p>
+</div>
+
+<div class="card" onclick="showPlayer('NOTAR7','NGUYỄN THÀNH CÔNG','23/5/2010','BOMMER','ALLSTAR UNITED ESPORTS','images/notar7.jpg')">
+<h2>NOTAR7</h2>
+<p>BOMMER</p>
+</div>
+
+</div>
+
+<div id="popup" class="popup">
+<div class="popup-content">
+
+<span class="close" onclick="closePopup()">×</span>
+
+<img id="playerImage" src="" alt="Player">
+
+<h2 id="name"></h2>
+
+<p><b>Họ và tên:</b> <span id="fullname"></span></p>
+<p><b>Ngày sinh:</b> <span id="age"></span></p>
+<p><b>ROLE:</b> <span id="role"></span></p>
+<p><b>TEAM:</b> <span id="position"></span></p>
+
+</div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
