@@ -7,7 +7,6 @@ Màu chủ đạo:
 - Hiệu ứng ánh sáng và animation mượt.
 
 Trang chủ gồm:
-- Logo lớn của đội.
 - Tiêu đề:
   ALLSTAR UNITED ESPORTS
 - Dòng chữ:
@@ -28,12 +27,10 @@ Phần Roster:
 Hiển thị dạng card.
 
 Mỗi card có:
-- Ảnh tuyển thủ.
 - Tên thi đấu.
 - Vai trò.
 
 Khi nhấn vào card sẽ mở popup đẹp có:
-- Ảnh lớn của tuyển thủ.
 - Tên thi đấu.
 - Họ và tên đầy đủ.
 - Vai trò.
