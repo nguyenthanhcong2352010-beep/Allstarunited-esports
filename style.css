@@ -129,4 +129,44 @@ button:hover{
 }
 
 .gallery img{
+    .contact{
+    padding:80px 20px;
+    background:#111;
+    color:#fff;
+    text-align:center;
+}
+
+.contact-info{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-top:30px;
+}
+
+.contact .card{
+    width:280px;
+    background:#1b1b1b;
+    padding:20px;
+    border-radius:15px;
+    border:1px solid #ff2d2d;
+    transition:.3s;
+}
+
+.contact .card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 20px rgba(255,0,0,.4);
+}
+
+.contact a{
+    color:#fff;
+    text-decoration:none;
+}
+
+footer{
+    background:#000;
+    color:#888;
+    text-align:center;
+    padding:20px;
+}
    
